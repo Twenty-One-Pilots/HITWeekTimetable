@@ -33,12 +33,12 @@ public class Schedule {
         Schedule scd = new Schedule();
 
         //创建文件读取总课表
-        File sch1 = new File("C:\\Users\\Lenovo\\Desktop\\1711003 1736110 .xls");
+        File sch1 = new File("C:\\Users\\Lenovo\\Desktop\\1711003.xls");
         Workbook wb1 = Workbook.getWorkbook(sch1);
         Sheet sheet1 = wb1.getSheet(0);
 
         //创建文件存储分周课表
-        File sch2 = new File("C:\\Users\\Lenovo\\Desktop\\1711003 1736110 (devided).xls");
+        File sch2 = new File("C:\\Users\\Lenovo\\Desktop\\1711003(devided).xls");
         WritableWorkbook wb2 = Workbook.createWorkbook(sch2);
 
         //设置标题格式
@@ -67,7 +67,7 @@ public class Schedule {
             //创建sheet
             WritableSheet sheet = wb2.createSheet("第" + week + "周", week - 1);
             //添加表头、标题
-            sheet.addCell(new Label(0, 0, "畅畅同学" + "第" + week + "周课表", format1));
+            sheet.addCell(new Label(0, 0, "第" + week + "周课表", format1));
             sheet.addCell(new Label(0, 1, "", scd.SetHead(0)));
             sheet.addCell(new Label(1, 1, "", scd.SetHead(0)));
             sheet.addCell(new Label(2, 1, "星期一", scd.SetHead(0)));
