@@ -9,8 +9,8 @@ src中的源码只需要修改40行前后的总表路径和周表名称路径
 
 总课表：
 
-<center>![修改前](https://github.com/Twenty-One-Pilots/HITWeekTimetable/blob/master/image/TIM%E6%88%AA%E5%9B%BE20180823211741.png)
+![image1](https://github.com/Twenty-One-Pilots/HITWeekTimetable/blob/master/image/TIM%E6%88%AA%E5%9B%BE20180823211741.png)
   
 周课表：
 
-<center>![修改前](https://github.com/Twenty-One-Pilots/HITWeekTimetable/blob/master/image/TIM%E6%88%AA%E5%9B%BE20180823211712.png)
+![image2](https://github.com/Twenty-One-Pilots/HITWeekTimetable/blob/master/image/TIM%E6%88%AA%E5%9B%BE20180823211712.png)
