@@ -146,22 +146,45 @@ public class Schedule {
                     //截取该课程的周数
                     String course = cell.substring(fpos + 1, lpos);
                     //按照，将课程周数截开
-                    //例如[1,4,6-8周]操作后得到{"1","4","6-8"}数组
+                    //例如[1,4,7-11单周]操作后得到{"1","4","7-11单"}数组
                     String[] wks = course.split("，");
                     //将数组拆成单周并且在weeks[]记录
-                    //例如{"1","4","6-8"}操作后得到{1,4,6,7,8}并且对应的5周作标记
+                    //例如{"1","4","7-11单"}操作后得到{1,4,7,9,11}并且对应的5周作标记
                     for (String wk : wks) {
                         int mpos = wk.indexOf("-");
                         if (mpos != -1) {
                             int first = Integer.parseInt(wk.substring(0, mpos));
-                            int last = Integer.parseInt(wk.substring(mpos + 1));
-                            for (int i = first; i <= last; i++) {
-                                weeks[i] = true;
+                            int last;
+                              //考虑单双周情况
+                             if (wk.substring(wk.length()-1).compareTo("单") == 0||wk.substring(wk.length()-1).compareTo("双") == 0) {
+                                 last = Integer.parseInt(wk.substring(mpos + 1,wk.length()-1));
+                             }
+                             else {
+                                 last = Integer.parseInt(wk.substring(mpos + 1,wk.length()));
+                             }
+                             
+                            if (wk.substring(wk.length()-1).compareTo("单") == 0) {
+                                for (int i = first; i <= last; i++) {
+                                    if (i % 2 != 0) {
+                                        weeks[i] = true;
+                                    }
+                                }
+                            } else if (wk.substring(wk.length()-1).compareTo("双") == 0) {
+                                for (int i = first; i <= last; i++) {
+                                    if (i % 2 == 0) {
+                                        weeks[i] = true;
+                                    }
+                                }
+                            } else {
+                                for (int i = first; i <= last; i++) {
+                                    weeks[i] = true;
+                                }
                             }
                         } else {
                             weeks[Integer.parseInt(wk)] = true;
                         }
                     }
+
 
                     //获取该课程信息information
                     String info;
